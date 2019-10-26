@@ -100,3 +100,30 @@ body {
     height: 100%;
     cursor: pointer;
 }
+
+@media (max-width: 1080px) {
+    .content {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+   
+    .header {
+        max-height: 100px;
+        /* padding: 0 20px; */
+    }
+   
+    .content__list {
+        overflow-y: visible;
+        padding: 20px;
+        width: 100%;
+        height: auto;
+    }
+   
+    .content__map {
+        max-height: 70vh;
+    }
+   
+    .footer {
+        min-height: 100px;
+    }
+   }
