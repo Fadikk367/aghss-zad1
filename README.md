@@ -25,6 +25,11 @@ Just click on the map to put there a marker, coordinates will be also added to t
 Plain JS, CSS, HTML + Google Maps JS API.
 No bootstrap or jQuery.
 
+## Icons authors
+
+rokcet icon - [Freepik](https://www.flaticon.com/authors/freepik)
+delete icon - [Alfredo Hernandez](https://www.flaticon.com/authors/alfredo-hernandez) 
+
 ## TO DO
 
 OPTIMIZATION and rewriting it much cleaner...
