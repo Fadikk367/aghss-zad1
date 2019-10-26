@@ -36,11 +36,11 @@ function addListPosition(coords, index) {
     });
 
     const lat = document.createElement('span');
-    lat.textContent = `lat: ${coords.lat().toPrecision(8)}`;
+    lat.textContent = `lat: ${coords.lat.toPrecision(8)}`;
     lat.className = 'item__latlng';
 
     const lng = document.createElement('span');
-    lng.textContent = `lng: ${coords.lng().toPrecision(8)}`;
+    lng.textContent = `lng: ${coords.lng.toPrecision(8)}`;
     lng.className = 'item__latlng';
 
     itemHeader.appendChild(title);
@@ -53,17 +53,7 @@ function addListPosition(coords, index) {
     list.appendChild(listItem);
 }
 
-function reRenderList() {
-    list.textContent = '';
-    markers = [];
-    coordinates.forEach((element, index) => {
-        const marker = putMarker(e.latLng);
-        markers.push(marker);
-        coordinates.push(element);
-        window.localStorage.setItem('coordinates', JSON.stringify(coordinates));
-        addListPosition(element, index);
-    });
-}
+
 
 function initMap() {
     const options = {
@@ -85,8 +75,8 @@ function initMap() {
 
         const infoWindow = new google.maps.InfoWindow({
             content: `
-                <div class="">${coords.lat().toPrecision(8)}</div>
-                <div>${coords.lng().toPrecision(8)}</div>`,
+                <div class="">${coords.lat.toPrecision(8)}</div>
+                <div>${coords.lng.toPrecision(8)}</div>`,
         });
 
         infoWindow.open(map, marker);
@@ -98,20 +88,33 @@ function initMap() {
         return marker;
     }
 
+    function reRenderList() {
+        list.textContent = '';
+        markers = [];
+        window.localStorage.setItem('coordinates', JSON.stringify(coordinates));
+        coordinates.forEach((element, index) => {
+            const marker = putMarker(element);
+            markers.push(marker);
+            addListPosition(element, index);
+        });
+    }
+
+    reRenderList();
+
 
     
 
 
     google.maps.event.addListener(map, 'click', (e) => {
         const coords = {
-            lat: e.latLng.lat(),
-            lng: e.latLng.lng()
+            lat: Number(e.latLng.lat()),
+            lng: Number(e.latLng.lng())
         }
-        const marker = putMarker(e.latLng);
+        const marker = putMarker(coords);
         markers.push(marker);
         coordinates.push(coords);
         window.localStorage.setItem('coordinates', JSON.stringify(coordinates));
-        addListPosition(e.latLng, listItems.length)
+        addListPosition(coords, listItems.length)
     });
 }
 
