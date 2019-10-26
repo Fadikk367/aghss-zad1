@@ -28,6 +28,8 @@ No bootstrap or jQuery.
 ## Icons authors
 
 rokcet icon - [Freepik](https://www.flaticon.com/authors/freepik)
+
+
 delete icon - [Alfredo Hernandez](https://www.flaticon.com/authors/alfredo-hernandez) 
 
 ## TO DO
